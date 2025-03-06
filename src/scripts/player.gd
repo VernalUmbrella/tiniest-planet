@@ -5,6 +5,8 @@ const BASE_ROTATE_SPEED = 120
 const BOOST_MULTIPLIER = 3
 const ProjectileScene = preload("res://scenes/player_projectile.tscn")
 
+@export var shoot_sound: AudioStream
+
 @onready var muzzle = $Muzzle
 @onready var game_node = $".."
 
@@ -28,6 +30,7 @@ func shoot(): #create a projectile
 	new_projectile.global_position = muzzle.global_position
 	new_projectile.rotation = rotation
 	game_node.add_child(new_projectile)
+	SFXPlayer.play(shoot_sound)
 	
 
 

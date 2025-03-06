@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3jf67d44fmlv"]
+
+[ext_resource type="Script" uid="uid://eikwdlqcnkr3" path="res://_global/sfx_player.gd" id="1_lfm8g"]
+
+[node name="SFXPlayer" type="Node"]
+script = ExtResource("1_lfm8g")
+
+[node name="Channel0" type="AudioStreamPlayer" parent="."]
+
+[node name="Channel1" type="AudioStreamPlayer" parent="."]
+
+[node name="Channel2" type="AudioStreamPlayer" parent="."]
