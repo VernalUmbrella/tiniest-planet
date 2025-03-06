@@ -1,12 +1,14 @@
-extends RigidBody2D
+class_name PlayerProjectile
+extends Area2D
 
 const SPEED = 200
 
-func _ready() -> void:
-	linear_velocity = Vector2.UP.rotated(rotation) * SPEED
 
 func _process(delta: float) -> void:
-	if global_position.distance_to(Vector2(0,0)) > 512: queue_free() #temp - make sure bullets unload after leaving the screen
+	position += SPEED * delta * Vector2.UP.rotated(rotation)
 
-func _on_hitbox_area_entered(area: Area2D) -> void: #use this when an enemy is hit
-	pass
+
+func _on_area_entered(_area:Area2D) -> void:
+	print("BULLET OUTTT")
+	queue_free()
+

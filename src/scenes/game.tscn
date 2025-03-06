@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx71tyt13sqo8"]
+[gd_scene load_steps=9 format=3 uid="uid://bx71tyt13sqo8"]
 
-[ext_resource type="Texture2D" uid="uid://dohcjbd6ctbka" path="res://sprites/enemy_blaster.png" id="1_8aol8"]
+[ext_resource type="Script" uid="uid://bm5kn8si0p3ln" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="Texture2D" uid="uid://c8jd22cdmruq" path="res://sprites/planet.png" id="1_x30i3"]
 [ext_resource type="PackedScene" uid="uid://d0xdamowdnklc" path="res://scenes/combatants/player.tscn" id="2_2mxe4"]
 [ext_resource type="Texture2D" uid="uid://dil224ucsupqi" path="res://sprites/white.png" id="3_m0v4x"]
 [ext_resource type="Shader" uid="uid://bfxc8a76kbq1j" path="res://shaders/colorswap.gdshader" id="4_jx652"]
 [ext_resource type="AudioStream" uid="uid://5dkcj5a7swkl" path="res://audio/soundFiles/TiniestPlanetMusic.ogg" id="6_ar32y"]
+[ext_resource type="PackedScene" uid="uid://26qw0g1kc1jw" path="res://scenes/combatants/enemy.tscn" id="7_u5sy4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s4ngi"]
 shader = ExtResource("4_jx652")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_gee14")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -22,11 +24,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="EnemyBlaster" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(69, 125)
-texture = ExtResource("1_8aol8")
 
 [node name="Planet" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -55,3 +52,18 @@ offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_m0v4x")
+
+[node name="Enemy" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(126, 35)
+
+[node name="Enemy2" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(170, 52)
+
+[node name="Enemy3" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(223, 117)
+
+[node name="Enemy4" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(27, 67)
+
+[node name="Enemy5" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(210, 63)
