@@ -10,38 +10,48 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s4ngi"]
 shader = ExtResource("4_jx652")
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node2D"]
 
-[node name="background" type="ColorRect" parent="."]
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="EnemyBlaster" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-79, 3)
+position = Vector2(69, 125)
 texture = ExtResource("1_8aol8")
 
 [node name="Planet" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(128, 128)
 texture = ExtResource("1_x30i3")
 
 [node name="Player" parent="." instance=ExtResource("2_2mxe4")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 1, 0, 1)
-material = SubResource("ShaderMaterial_s4ngi")
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-texture = ExtResource("3_m0v4x")
+position = Vector2(128, 127)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ar32y")
 autoplay = true
+
+[node name="FrontLayer" type="CanvasLayer" parent="."]
+
+[node name="ShaderFilter" type="TextureRect" parent="FrontLayer"]
+modulate = Color(0, 1, 0, 1)
+material = SubResource("ShaderMaterial_s4ngi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -0.5
+offset_right = -0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_m0v4x")
