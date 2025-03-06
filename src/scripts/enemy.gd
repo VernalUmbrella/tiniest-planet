@@ -2,7 +2,7 @@ class_name Enemy
 extends Node2D
 
 @export var fall_speed: float = 8.0
-@export_range(0, 360, 0.1, "radians_as_degrees") var angular_speed: float = 0.1
+@export_range(0, 360, 0.1, "radians_as_degrees") var angular_speed: float = 0.05
 
 @onready var orbit: Area2D = $Orbit
 
