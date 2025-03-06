@@ -1,7 +1,7 @@
 class_name Player
 extends Node2D
 
-const BASE_ROTATE_SPEED = 60
+const BASE_ROTATE_SPEED = 120
 const BOOST_MULTIPLIER = 3
 const ProjectileScene = preload("res://scenes/player_projectile.tscn")
 
