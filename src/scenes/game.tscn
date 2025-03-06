@@ -40,19 +40,20 @@ texture = ExtResource("1_x30i3")
 position = Vector2(128, 127)
 
 [node name="Enemy" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(126, 35)
+position = Vector2(128, 128)
+rotation = 1.56207
 
 [node name="Enemy2" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(170, 52)
+position = Vector2(128, 128)
+rotation = 0.794125
 
 [node name="Enemy3" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(223, 117)
+position = Vector2(128, 128)
+rotation = -0.340339
 
 [node name="Enemy4" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(27, 67)
-
-[node name="Enemy5" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(210, 63)
+position = Vector2(128, 128)
+rotation = -1.74533
 
 [node name="FrontLayer" type="CanvasLayer" parent="."]
 
