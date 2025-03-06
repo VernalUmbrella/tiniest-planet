@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx71tyt13sqo8"]
+[gd_scene load_steps=10 format=3 uid="uid://bx71tyt13sqo8"]
 
 [ext_resource type="Script" uid="uid://bm5kn8si0p3ln" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="Texture2D" uid="uid://c8jd22cdmruq" path="res://sprites/planet.png" id="1_x30i3"]
@@ -11,8 +11,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s4ngi"]
 shader = ExtResource("4_jx652")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
+size = Vector2(300, 300)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gee14")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ar32y")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -33,9 +39,20 @@ texture = ExtResource("1_x30i3")
 [node name="Player" parent="." instance=ExtResource("2_2mxe4")]
 position = Vector2(128, 127)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ar32y")
-autoplay = true
+[node name="Enemy" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(126, 35)
+
+[node name="Enemy2" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(170, 52)
+
+[node name="Enemy3" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(223, 117)
+
+[node name="Enemy4" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(27, 67)
+
+[node name="Enemy5" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(210, 63)
 
 [node name="FrontLayer" type="CanvasLayer" parent="."]
 
@@ -53,17 +70,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_m0v4x")
 
-[node name="Enemy" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(126, 35)
+[node name="PlayableArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 10
 
-[node name="Enemy2" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(170, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayableArea"]
+position = Vector2(128, 128)
+shape = SubResource("RectangleShape2D_u5sy4")
+debug_color = Color(0, 0.6, 0.701961, 0.145098)
 
-[node name="Enemy3" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(223, 117)
-
-[node name="Enemy4" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(27, 67)
-
-[node name="Enemy5" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(210, 63)
+[connection signal="area_exited" from="PlayableArea" to="." method="_on_playable_area_area_exited"]
