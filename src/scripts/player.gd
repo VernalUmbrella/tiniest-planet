@@ -7,8 +7,8 @@ const ProjectileScene = preload("res://scenes/player_projectile.tscn")
 
 @export var shoot_sound: AudioStream
 
-@onready var muzzle = $Muzzle
-@onready var game_node = $".."
+@onready var muzzle: Node2D = %Muzzle
+@onready var game_node: Node = $".."
 
 var speed_multiplier: float = 1
 
@@ -34,5 +34,5 @@ func shoot(): #create a projectile
 	
 
 
-func _on_hitbox_area_entered(_area: Area2D) -> void: #hitbox
+func _on_orbit_area_entered(_area: Area2D) -> void: #hitbox
 	print("ACK I'VE BEEN HIT")

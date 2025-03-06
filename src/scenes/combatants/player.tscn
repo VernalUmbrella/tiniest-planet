@@ -11,20 +11,20 @@ size = Vector2(16, 6)
 script = ExtResource("1_4w7ow")
 shoot_sound = ExtResource("2_vgsjq")
 
-[node name="Turret" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -39)
-texture = ExtResource("1_wjf0w")
-
-[node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(0, -40)
+[node name="Orbit" type="Area2D" parent="."]
+position = Vector2(0, -20)
 collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orbit"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_upjm5")
 
-[node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(0, -42)
+[node name="Turret" type="Sprite2D" parent="Orbit"]
+texture_filter = 1
+texture = ExtResource("1_wjf0w")
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[node name="Muzzle" type="Node2D" parent="Orbit"]
+unique_name_in_owner = true
+position = Vector2(0, -3)
+
+[connection signal="area_entered" from="Orbit" to="." method="_on_orbit_area_entered"]
