@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7xf2oxgx3j00"]
+
+[ext_resource type="FontFile" uid="uid://bd2exffmnf7o2" path="res://ui/Eudaemon-Bold.ttf" id="1_7xhpk"]
+[ext_resource type="Script" uid="uid://u7a43sgmaphj" path="res://ui/title_screen.gd" id="1_qer0c"]
+[ext_resource type="Script" uid="uid://dp2lxahq34iyq" path="res://ui/orbiting_planet.gd" id="2_bor1v"]
+[ext_resource type="Texture2D" uid="uid://dohcjbd6ctbka" path="res://sprites/enemy_blaster.png" id="4_dk6f0"]
+
+[sub_resource type="Gradient" id="Gradient_7xhpk"]
+offsets = PackedFloat32Array(0, 0.999, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bor1v"]
+gradient = SubResource("Gradient_7xhpk")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qer0c")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="TitleText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 22.0
+offset_right = 86.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_7xhpk")
+text = "Tiniest Planet"
+
+[node name="OrbitingPlanet" type="Sprite2D" parent="."]
+position = Vector2(128, 128)
+texture = SubResource("GradientTexture2D_bor1v")
+script = ExtResource("2_bor1v")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(128, 128)
+texture = ExtResource("4_dk6f0")
+
+[node name="StartText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -33.0
+offset_right = 35.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_7xhpk")
+text = "START"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
