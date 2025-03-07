@@ -6,6 +6,7 @@ const BOOST_MULTIPLIER = 3
 const ProjectileScene = preload("res://scenes/player_projectile.tscn")
 
 @export var shoot_sound: AudioStream
+@export var bullet_limit: int = 3
 
 @onready var muzzle: Node2D = %Muzzle
 @onready var game_node: Node = $".."
@@ -25,13 +26,15 @@ func _process(delta: float) -> void:
 	rotate(deg_to_rad(BASE_ROTATE_SPEED) * speed_multiplier * delta)
 
 
-func shoot(): #create a projectile
+func shoot():
+	if get_tree().get_node_count_in_group("player_projectile") >= bullet_limit:
+		# TODO: error/fizzle sound?
+		return
 	var new_projectile = ProjectileScene.instantiate()
 	new_projectile.global_position = muzzle.global_position
 	new_projectile.rotation = rotation
 	game_node.add_child(new_projectile)
 	SFXPlayer.play(shoot_sound)
-	
 
 
 func _on_orbit_area_entered(_area: Area2D) -> void: #hitbox
