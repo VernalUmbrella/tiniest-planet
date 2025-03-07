@@ -19,6 +19,9 @@ func die() -> void:
 
 
 func _on_orbit_area_entered(area:Area2D) -> void:
-	# TODO: differentiate between crashing into the planet and getting hit by a bullet
+	if area.is_in_group("player_projectile"):
+		Events.enemy_died.emit()
+	else:
+		Events.player_died.emit()
 	die()
 

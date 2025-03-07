@@ -62,7 +62,8 @@ position = Vector2(128, 127)
 
 [node name="FrontLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="FrontLayer"]
+[node name="ScoreCounter" type="Label" parent="FrontLayer"]
+unique_name_in_owner = true
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 38.0
@@ -80,12 +81,13 @@ offset_bottom = 26.0
 grow_horizontal = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="FrontLayer/LivesDisplay"]
+[node name="TurretIcon" type="TextureRect" parent="FrontLayer/LivesDisplay"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_u5sy4")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="FrontLayer/LivesDisplay"]
+[node name="LivesCounter" type="Label" parent="FrontLayer/LivesDisplay"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "5"
 
