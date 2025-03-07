@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://26qw0g1kc1jw"]
+
+[ext_resource type="Script" uid="uid://bwirobtfdjx8k" path="res://scripts/enemy.gd" id="1_c4wmk"]
+[ext_resource type="Texture2D" uid="uid://dohcjbd6ctbka" path="res://sprites/enemy_blaster.png" id="1_vue1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4wmk"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_c4wmk")
+
+[node name="Orbit" type="Area2D" parent="."]
+position = Vector2(0, -200)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orbit"]
+shape = SubResource("CircleShape2D_c4wmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Orbit"]
+texture = ExtResource("1_vue1e")
+
+[connection signal="area_entered" from="Orbit" to="." method="_on_orbit_area_entered"]
