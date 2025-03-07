@@ -21,7 +21,5 @@ func die() -> void:
 func _on_orbit_area_entered(area:Area2D) -> void:
 	if area.is_in_group("player_projectile"):
 		Events.enemy_died.emit()
-	else:
-		Events.player_died.emit()
 	die()
 

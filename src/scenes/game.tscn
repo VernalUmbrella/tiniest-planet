@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bx71tyt13sqo8"]
+[gd_scene load_steps=12 format=3 uid="uid://bx71tyt13sqo8"]
 
 [ext_resource type="Script" uid="uid://bm5kn8si0p3ln" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://d0xdamowdnklc" path="res://scenes/combatants/player.tscn" id="2_2mxe4"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://comglkasikwj" path="res://scripts/enemy_spawner.gd" id="3_u5sy4"]
 [ext_resource type="Shader" uid="uid://bfxc8a76kbq1j" path="res://shaders/colorswap.gdshader" id="4_jx652"]
 [ext_resource type="Texture2D" uid="uid://bw120wq16yvk8" path="res://sprites/turret.png" id="5_u5sy4"]
-[ext_resource type="AudioStream" uid="uid://5dkcj5a7swkl" path="res://audio/soundFiles/TiniestPlanetMusic.ogg" id="6_ar32y"]
 
 [sub_resource type="Gradient" id="Gradient_p57ef"]
 offsets = PackedFloat32Array(0, 0.999, 1)
@@ -32,9 +31,6 @@ size = Vector2(300, 300)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gee14")
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ar32y")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

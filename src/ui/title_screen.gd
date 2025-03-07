@@ -12,4 +12,5 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		pass # go to interstitial
+		GlobalStats.reset()
+		get_tree().change_scene_to_file("res://ui/interstitial.tscn")

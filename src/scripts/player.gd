@@ -38,4 +38,5 @@ func shoot():
 
 
 func _on_orbit_area_entered(_area: Area2D) -> void: #hitbox
-	print("ACK I'VE BEEN HIT")
+	# TODO: explosion
+	Events.player_died.emit()

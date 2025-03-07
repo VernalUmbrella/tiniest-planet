@@ -5,29 +5,16 @@ const WINDOW_WIDTH := 256
 const WINDOW_HEIGHT := 256
 const SCREEN_CENTER := Vector2(WINDOW_WIDTH, WINDOW_HEIGHT) / 2
 
-@onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var player: Player = $Player
 @onready var score_counter: Label = %ScoreCounter
 @onready var lives_counter: Label = %LivesCounter
 
-var score: int = 0:
-	set(value):
-		score = value
-		while score > 127: # funny byte overflow simulation
-			score -= 256
-		score_counter.text = "%03d" % score
-var lives: int = 5:
-	set(value):
-		lives = value
-		lives_counter.text = str(lives)
 
 func _ready() -> void:
 	Events.enemy_died.connect(_on_enemy_died)
 	Events.player_died.connect(_on_player_died)
-	start_round()
-
-
-func start_round() -> void:
-	music_player.play()
+	score_counter.text = "%03d" % GlobalStats.score
+	lives_counter.text = str(GlobalStats.lives)
 
 
 func _on_playable_area_area_exited(area: Area2D) -> void:
@@ -36,8 +23,18 @@ func _on_playable_area_area_exited(area: Area2D) -> void:
 
 
 func _on_player_died():
-	lives -= 1
+	GlobalStats.lives -= 1
+	lives_counter.text = str(GlobalStats.lives)
+	remove_child.call_deferred(player)
+	await get_tree().create_timer(2.0).timeout
+	if GlobalStats.lives > 0:
+		get_tree().change_scene_to_file("res://ui/interstitial.tscn")
+	else:
+		get_tree().change_scene_to_file("res://ui/title_screen.tscn")
 
 
 func _on_enemy_died():
-	score += 1
+	GlobalStats.score += 1
+	while GlobalStats.score > 127: # funny byte overflow simulation
+		GlobalStats.score -= 256
+	score_counter.text = "%03d" % GlobalStats.score

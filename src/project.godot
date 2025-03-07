@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tiniest Planet"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="uid://c7xf2oxgx3j00"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
@@ -23,6 +23,7 @@ config/icon="uid://dohcjbd6ctbka"
 
 SFXPlayer="*res://_global/sfx_player.tscn"
 Events="*res://_global/events.gd"
+GlobalStats="*res://_global/global_stats.gd"
 
 [display]
 
@@ -39,6 +40,7 @@ project/assembly_name="Tiniest Planet"
 [global_group]
 
 player_projectile=""
+enemy=""
 
 [gui]
 
