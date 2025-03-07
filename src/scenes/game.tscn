@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx71tyt13sqo8"]
+[gd_scene load_steps=13 format=3 uid="uid://bx71tyt13sqo8"]
 
 [ext_resource type="Script" uid="uid://bm5kn8si0p3ln" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://d0xdamowdnklc" path="res://scenes/combatants/player.tscn" id="2_2mxe4"]
 [ext_resource type="Texture2D" uid="uid://dil224ucsupqi" path="res://sprites/white.png" id="3_m0v4x"]
 [ext_resource type="Script" uid="uid://comglkasikwj" path="res://scripts/enemy_spawner.gd" id="3_u5sy4"]
 [ext_resource type="Shader" uid="uid://bfxc8a76kbq1j" path="res://shaders/colorswap.gdshader" id="4_jx652"]
+[ext_resource type="Texture2D" uid="uid://bw120wq16yvk8" path="res://sprites/turret.png" id="5_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://5dkcj5a7swkl" path="res://audio/soundFiles/TiniestPlanetMusic.ogg" id="6_ar32y"]
 
 [sub_resource type="Gradient" id="Gradient_p57ef"]
@@ -18,6 +19,10 @@ height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(8, 8, 16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s4ngi"]
 shader = ExtResource("4_jx652")
@@ -41,6 +46,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Planet" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -56,6 +62,32 @@ position = Vector2(128, 127)
 
 [node name="FrontLayer" type="CanvasLayer" parent="."]
 
+[node name="Label" type="Label" parent="FrontLayer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 38.0
+offset_bottom = 33.0
+text = "000"
+
+[node name="LivesDisplay" type="HBoxContainer" parent="FrontLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_right = -5.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="FrontLayer/LivesDisplay"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_u5sy4")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="FrontLayer/LivesDisplay"]
+layout_mode = 2
+text = "x 5"
+
 [node name="ShaderFilter" type="TextureRect" parent="FrontLayer"]
 modulate = Color(0, 1, 0, 1)
 material = SubResource("ShaderMaterial_s4ngi")
@@ -69,10 +101,13 @@ offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_m0v4x")
+metadata/_edit_lock_ = true
 
 [node name="PlayableArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 10
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayableArea"]
 position = Vector2(128, 128)
