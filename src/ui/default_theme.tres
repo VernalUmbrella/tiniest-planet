@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://5pwawysiwwl0"]
+
+[ext_resource type="FontFile" uid="uid://cmcfo5jf0kpl3" path="res://ui/Eudaemon-Regular.ttf" id="1_vos2p"]
+
+[resource]
+default_font = ExtResource("1_vos2p")
+default_font_size = 16

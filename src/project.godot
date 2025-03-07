@@ -39,6 +39,10 @@ project/assembly_name="Tiniest Planet"
 
 player_projectile=""
 
+[gui]
+
+theme/custom="uid://5pwawysiwwl0"
+
 [input]
 
 shoot={
